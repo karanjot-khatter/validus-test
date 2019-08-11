@@ -32,13 +32,13 @@ include_once("includes/database.php");
             <th><?php echo $fundName ?></th>
             <?php endforeach ?>
         </tr>
-   <?php foreach (getInvestmentFunds() as $call): ?>
+   <?php foreach (getDataCall() as $call): ?>
+
    <?php
        $date = $call['date'];
        $ukDate = $newDate = date("d/m/Y", strtotime($date));
    ?>
-
-        <tr>
+       <tr>
             <td><?php echo $ukDate; ?></td>
             <td><?php echo $id = $call['call_id']; ?></td>
             <?php foreach (getFundData() as $fund) :?>
@@ -51,7 +51,7 @@ include_once("includes/database.php");
                 <?php else: ?>
                     <td><?php echo '-'?></td>
             <?php endif;?>
-            <?php endforeach ?>
+    <?php endforeach ?>
         </tr>
 
    <?php endforeach ?>

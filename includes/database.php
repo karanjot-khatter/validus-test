@@ -24,8 +24,7 @@ function openConnection()
     return $dbok;
 }
 
-    //close the connection
-
+//close the connection
 function closeConnection()
 {
     global $mysqli;
@@ -35,13 +34,15 @@ function closeConnection()
     }
 }
 
-function getInvestmentFunds()
+/*
+ * @desc - The query gets all data from the data_call table
+ * @return - array of data_call data
+ */
+function getDataCall()
 {
     openConnection();
 
     global $mysqli;
-
-    //the query below joins to get date information from data call table...
 
     $q = "SELECT * from data_call";
 
@@ -66,6 +67,11 @@ function getInvestmentFunds()
 return $calls;
 }
 
+/*
+ * @desc - The query gets information depending on if there is a match with the params in the database.
+ * @return - one array of information, if data exists... otherwise returns null
+ * @params - $callId & $fund
+ */
 function getFundInvestment($callId, $fund) {
     openConnection();
 
@@ -92,6 +98,10 @@ where dc.call_id = '$callId' and fund_id = '$fund'";
 
 }
 
+/*
+ * @desc -  The query gets all data from the data_fund table
+ * @return - The 4 arrays populated in the data_fund table...
+ */
 function getFundData()
 {
     openConnection();
