@@ -74,5 +74,28 @@
     display:none;
 }
 
+#dashboardBody {
+    padding-top: 3rem;
+    right: 50%;
+    position: absolute;
+}
 
+th{
+    text-align: center;
+    border-bottom: 1px solid;
+}
+
+
+td {
+    text-align:right;
+}
+
+th, td {
+    width: 6rem;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
 

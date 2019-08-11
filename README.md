@@ -7,4 +7,6 @@ order to invest in a new investment.
 # Implementation
 
 # References
-https://jquery.com/download/
+https://jquery.com/download/ - jquery in code
+https://www.w3schools.com/php/php_mysql_select.asp -connect php to sql
+https://www.w3schools.com/css/css_table.asp - table creation
