@@ -10,3 +10,4 @@ order to invest in a new investment.
 https://jquery.com/download/ - jquery in code
 https://www.w3schools.com/php/php_mysql_select.asp -connect php to sql
 https://www.w3schools.com/css/css_table.asp - table creation
+https://www.php.net/manual/en/function.date.php - date format
