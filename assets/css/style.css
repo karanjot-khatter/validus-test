@@ -8,6 +8,41 @@
     height: 3rem;
 }
 
+#topHeader .callLogo{
+    height: 1.2rem;
+    width: 15rem;
+    background-color: lightsteelblue;
+    color: black;
+    text-align:center;
+    font-size: 14px;
+    position:absolute;
+    display:none;
+    right: 50%;
+    top: 1.5rem;
+}
+
+#topHeader .dashboard-link {
+    color: black;
+    font-size: 14px;
+    position:absolute;
+    right: 25%;
+    top: 1.5rem;
+    border-bottom: 3px solid;
+    padding-bottom: 1.4rem;
+    border-color:darkblue;
+    display:none;
+}
+
+#topHeader .new-call-link {
+    color: gray;
+    font-size: 14px;
+    position:absolute;
+    right: 20%;
+    top: 1.5rem;
+    display:none;
+}
+
+
 #welcomeBody {
     padding-top: 3rem;
     position: absolute;
@@ -35,3 +70,5 @@
 #welcomeBody a{
     text-decoration: none;
 }
+
+
