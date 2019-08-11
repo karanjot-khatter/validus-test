@@ -42,7 +42,6 @@
     display:none;
 }
 
-
 #welcomeBody {
     padding-top: 3rem;
     position: absolute;
@@ -70,5 +69,10 @@
 #welcomeBody a{
     text-decoration: none;
 }
+
+#callBody{
+    display:none;
+}
+
 
 
