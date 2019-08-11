@@ -1,0 +1,37 @@
+#topHeader{
+    border-bottom: 1px solid;
+    padding-bottom: 5px;
+    color: lightgray;
+}
+
+#topHeader .logo{
+    height: 3rem;
+}
+
+#welcomeBody {
+    padding-top: 3rem;
+    position: absolute;
+    right: 40%;
+}
+
+#welcomeBody .callBox {
+    height: 10rem;
+    width: 20rem;
+    background-color: RoyalBlue;
+    border: 1px solid;
+    box-shadow: 0 3px darkgray;
+    font-size:30px;
+    color: white;
+    text-align:center;
+    display: table-cell;
+    vertical-align: middle;
+
+}
+
+#welcomeBody .callBox:hover{
+    background-color: blue;
+}
+
+#welcomeBody a{
+    text-decoration: none;
+}
