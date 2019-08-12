@@ -9,6 +9,7 @@ $mysqli = null;
 
 
 //open mysqli connection
+//used as a private function...
 function openConnection()
 {
     global $mysqli;
@@ -25,6 +26,7 @@ function openConnection()
 }
 
 //close the connection
+//used as a private function...
 function closeConnection()
 {
     global $mysqli;
@@ -36,6 +38,7 @@ function closeConnection()
 
 /*
  * @desc - The query gets all data from the data_call table
+ *  Used globally in call.phtml
  * @return - array of data_call data
  */
 function getDataCall()
@@ -68,7 +71,8 @@ return $calls;
 }
 
 /*
- * @desc - The query gets information depending on if there is a match with the params in the database.
+ * @desc - The query below gets call ID and investment_amount from data fund investment table...
+ *  Used globally in call.phtml
  * @return - one array of information, if data exists... otherwise returns null
  * @params - $callId & $fund
  */
@@ -77,12 +81,9 @@ function getFundInvestment($callId, $fund) {
 
     global $mysqli;
 
-    //the query below joins to get date information from data call table...
-
-    $q = "select dfi.call_id, dc.capital_requirement
-from data_call dc
-join data_fund_investment dfi on dc.id = dfi.call_id
-where dc.call_id = '$callId' and fund_id = '$fund'";
+    $q = "select dfi.call_id, dfi.investment_amount
+from data_fund_investment dfi
+where dfi.call_id = '$callId' and dfi.fund_id = '$fund'";
 
     $res = $mysqli->query($q);
 
@@ -99,7 +100,8 @@ where dc.call_id = '$callId' and fund_id = '$fund'";
 }
 
 /*
- * @desc -  The query gets all data from the data_fund table
+ * @desc -  The query gets all data from the data_fund table.
+  *  Used globally in call.phtml
  * @return - The 4 arrays populated in the data_fund table...
  */
 function getFundData()
@@ -107,8 +109,6 @@ function getFundData()
     openConnection();
 
     global $mysqli;
-
-    //the query below joins to get date information from data call table...
 
     $q = "SELECT * from data_fund";
 

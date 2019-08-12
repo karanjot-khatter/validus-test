@@ -47,7 +47,7 @@ include_once("includes/database.php");
                 $fundId = $fund['fund_id'];
                 $fundInvestment = getFundInvestment($id, $fundId );
                 ?>
-                <?php if ($capitalRequirement = $fundInvestment['capital_requirement']):?>
+                <?php if ($capitalRequirement = $fundInvestment['investment_amount']):?>
                     <td><?php echo $capitalRequirement?></td>
                     <?php else: ?>
                         <td><?php echo '-'?></td>
@@ -62,7 +62,7 @@ include_once("includes/database.php");
 
     <div class="new-call-body">
         <p>
-            call
+            edit this section!!
         </p>
 
     </div>
