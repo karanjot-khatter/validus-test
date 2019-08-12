@@ -8,65 +8,64 @@ include_once("includes/database.php");
 
 
 <body>
-<div id="dashboardBody">
+<div id="fund-info">
+    <div class="dashboard-body">
 
-    <table>
-        <tr>
-            <td></td>
-            <td></td>
-            <?php foreach (getFundData() as $fund) :?>
+        <table>
+            <tr>
+                <td></td>
+                <td></td>
+                <?php foreach (getFundData() as $fund) :?>
+                    <?php
+                    $fundId = $fund['fund_id'];
+                    ?>
+                <td style="color: gray"><?php echo $fundId?></td>
+                <?php endforeach ?>
+            </tr>
+
+            <tr>
+                <th>Date</th>
+                <th>Call #</th>
+                <?php foreach (getFundData() as $fund) :?>
+                <?php
+                $fundName = $fund['fund_name'];
+                ?>
+                <th><?php echo $fundName ?></th>
+                <?php endforeach ?>
+            </tr>
+       <?php foreach (getDataCall() as $call): ?>
+
+       <?php
+           $date = $call['date'];
+           $ukDate = $newDate = date("d/m/Y", strtotime($date));
+       ?>
+           <tr>
+                <td><?php echo $ukDate; ?></td>
+                <td><?php echo $id = $call['call_id']; ?></td>
+                <?php foreach (getFundData() as $fund) :?>
                 <?php
                 $fundId = $fund['fund_id'];
+                $fundInvestment = getFundInvestment($id, $fundId );
                 ?>
-            <td style="color: gray"><?php echo $fundId?></td>
-            <?php endforeach ?>
-        </tr>
+                <?php if ($capitalRequirement = $fundInvestment['capital_requirement']):?>
+                    <td><?php echo $capitalRequirement?></td>
+                    <?php else: ?>
+                        <td><?php echo '-'?></td>
+                <?php endif;?>
+        <?php endforeach ?>
+            </tr>
 
-        <tr>
-            <th>Date</th>
-            <th>Call #</th>
-            <?php foreach (getFundData() as $fund) :?>
-            <?php
-            $fundName = $fund['fund_name'];
-            ?>
-            <th><?php echo $fundName ?></th>
-            <?php endforeach ?>
-        </tr>
-   <?php foreach (getDataCall() as $call): ?>
+       <?php endforeach ?>
 
-   <?php
-       $date = $call['date'];
-       $ukDate = $newDate = date("d/m/Y", strtotime($date));
-   ?>
-       <tr>
-            <td><?php echo $ukDate; ?></td>
-            <td><?php echo $id = $call['call_id']; ?></td>
-            <?php foreach (getFundData() as $fund) :?>
-            <?php
-            $fundId = $fund['fund_id'];
-            $fundInvestment = getFundInvestment($id, $fundId );
-            ?>
-            <?php if ($capitalRequirement = $fundInvestment['capital_requirement']):?>
-                <td><?php echo $capitalRequirement?></td>
-                <?php else: ?>
-                    <td><?php echo '-'?></td>
-            <?php endif;?>
-    <?php endforeach ?>
-        </tr>
+        </table>
+    </div>
 
-   <?php endforeach ?>
+    <div class="new-call-body">
+        <p>
+            call
+        </p>
 
-    </table>
+    </div>
 </div>
 
-
-</div>
-
-<div id="callBody">
-    <p>
-        call
-    </p>
-
-
-</div>
 </body>

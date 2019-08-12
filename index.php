@@ -4,7 +4,6 @@
 include_once("includes/header.html");
 
 //body of welcome page
-//
 include_once("includes/welcome.html");
 ?>
 

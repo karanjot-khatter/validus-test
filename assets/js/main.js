@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    if ($("#dashboardBody" ).length > 0) {
+    if ($("#fund-info" ).length > 0) {
         $(".callLogo").show();
         $(".dashboard-link").show();
         $(".new-call-link").show();
@@ -8,8 +8,8 @@ $(document).ready(function() {
     $(".new-call-link").click(function (e) {
         e.preventDefault();
         var nonClickedLink = $('.dashboard-link');
-        var dashboardBody = $('#dashboardBody');
-        var callBody = $('#callBody');
+        var dashboardBody = $('.dashboard-body');
+        var callBody = $('.new-call-body');
         var clickedLink = $(this);
         clickedProperties(clickedLink);
         nonClickedProperties(nonClickedLink);
@@ -20,8 +20,8 @@ $(document).ready(function() {
     $(".dashboard-link").click(function (e) {
         e.preventDefault();
         var nonClickedLink = $('.new-call-link');
-        var callBody = $('#callBody');
-        var dashboardBody = $('#dashboardBody');
+        var callBody = $('.new-call-body');
+        var dashboardBody = $('.dashboard-body');
         var clickedLink = $(this);
         clickedProperties(clickedLink);
         nonClickedProperties(nonClickedLink);
