@@ -61,11 +61,43 @@ include_once("includes/database.php");
     </div>
 
     <div class="new-call-body">
-        <p>
-            edit this section!!
-        </p>
+
+        <form action="includes/utilities.php">
+
+            <div class="section">
+                <label>Date</label>
+                <input type="text" id='date' name="date" placeholder="<?php echo date("d/m/Y")?>" disabled>
+            </div>
+
+            <div class="section">
+                <label>Rules</label>
+                <input type="text" id="rules" name="rules" placeholder="First In First Out (FIFO)" disabled>
+            </div>
+
+            <div class="section">
+                <label>Investment Name</label>
+                <input type="text" id="name" name="name" placeholder="<?php echo 'Investment' . ' '. ++$id ?>" disabled>
+            </div>
+
+            <div class="section">
+                <label>Capital Required for Investment</label>
+                <input id='currency' placeholder="$" disabled>
+                <input id="capital" datatype="currency" type="text" name="capital" placeholder="10,000,000.00">
+            </div>
+
+
+        <input type="submit" id="calculate" value="Calculate">
+
+        </form>
 
     </div>
+
+    <div class="commitment">
+
+
+
+    </div>
+
 </div>
 
 </body>

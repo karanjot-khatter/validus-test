@@ -20,9 +20,8 @@
 #topHeader .dashboard-link {
     color: black;
     right: 25%;
-    border-bottom: 3px solid;
+    border-bottom: 3px solid #4472C4;
     padding-bottom: 1.4rem;
-    border-color:#4472C4;
 }
 
 #topHeader .new-call-link {
@@ -53,6 +52,7 @@
     text-align:center;
     display: table-cell;
     vertical-align: middle;
+    border: 1px solid black;
 
 }
 
@@ -93,3 +93,67 @@ table {
     width: 100%;
 }
 
+.new-call-body{
+    margin: auto;
+    left: 10%;
+    width: 500px;
+    padding-top: 4rem;
+    position: absolute;
+}
+.new-call-body label, .new-call-body input {
+    font-size: 12px;
+    float: left;
+    color: black;
+    position: relative;
+    display: inline-block;
+}
+.new-call-body input {
+    width: 50%;
+    border: 1px solid gray;
+}
+
+.new-call-body label {
+    font-weight: bold;
+    width: 40%;
+    text-align: right;
+    padding-right: 10px;
+}
+
+.new-call-body input::placeholder{
+    color:black;
+    text-align: left;
+}
+
+input#date::placeholder, input#capital::placeholder  {
+     text-align: right;
+}
+
+input#calculate {
+    top: 4rem;
+    left: 10rem;
+    color: white;
+    background-color: #0070C0;
+    border-radius: 10px;
+    width: 200px;
+    height: 50px;
+    font-size: 20px;
+    text-align: center;
+}
+
+.new-call-body .section{
+    height: 2rem;
+}
+
+input#currency {
+    width:5%;
+    border-right:none;
+}
+
+input#capital{
+    width: 45%;
+    border-left:none;
+}
+
+input#calculate:hover {
+    background-color:blue;
+}

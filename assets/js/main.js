@@ -1,4 +1,5 @@
 $(document).ready(function() {
+
     if ($("#fund-info" ).length > 0) {
         $(".callLogo").show();
         $(".dashboard-link").show();
@@ -33,9 +34,8 @@ $(document).ready(function() {
     function clickedProperties(clickedLink)
     {
         $(clickedLink).css('color', 'black');
-        $(clickedLink).css('border-bottom', '3px solid');
+        $(clickedLink).css('border-bottom', '3px solid #4472C4');
         $(clickedLink).css('padding-bottom', '1.4rem');
-        $(clickedLink).css('border-color', '#4472C4');
         $(clickedLink).prop('disabled', true);
     }
 

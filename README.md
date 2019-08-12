@@ -6,8 +6,8 @@ order to invest in a new investment.
 - Go to 'http://validus.test'
 - On the first directed page; start by clicking the big blue box in the middle, this will direct you to the dashboard.
 - On the dashboard, you are able to view all confirmed investment funds.
-- You are able to return to the welcome page wherever you want by clicking on the 'validus logo'
-- On the dashboard you are able to click 'new call' button on the top right, which is in gray.
+- Also on the dashboard you are able to click 'new call' link on the top right, which is in gray.
+- The dashboard link is disabled, unless you are on the new call page. 
 - On the new call page...
 
 # Implementation
