@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    if (window.location.pathname == '/call.php') {
+    if ($("#dashboardBody" ).length > 0) {
         $(".callLogo").show();
         $(".dashboard-link").show();
         $(".new-call-link").show();

@@ -14,32 +14,27 @@
     background-color: lightsteelblue;
     color: black;
     text-align:center;
-    font-size: 14px;
-    position:absolute;
-    display:none;
     right: 50%;
-    top: 1.5rem;
 }
 
 #topHeader .dashboard-link {
     color: black;
-    font-size: 14px;
-    position:absolute;
     right: 25%;
-    top: 1.5rem;
     border-bottom: 3px solid;
     padding-bottom: 1.4rem;
     border-color:darkblue;
-    display:none;
 }
 
 #topHeader .new-call-link {
     color: gray;
+    right: 20%;
+}
+
+.new-call-link, .dashboard-link, .callLogo {
+    display:none;
+    top: 1.5rem;
     font-size: 14px;
     position:absolute;
-    right: 20%;
-    top: 1.5rem;
-    display:none;
 }
 
 #welcomeBody {
@@ -76,7 +71,7 @@
 
 #dashboardBody {
     padding-top: 3rem;
-    right: 50%;
+    right: 30%;
     position: absolute;
 }
 
@@ -91,7 +86,7 @@ td {
 }
 
 th, td {
-    width: 6rem;
+    width: 8rem;
 }
 
 table {
