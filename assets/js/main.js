@@ -1,5 +1,14 @@
 $(document).ready(function() {
 
+    var $form = $('form');
+    $form.submit(function(){
+        $.post($(this).attr('action'), $(this).serialize(), function(response){
+            // $(".hidden-commitment-columns").show();
+        },'json');
+        return false;
+    });
+
+
     if ($("#fund-info" ).length > 0) {
         $(".callLogo").show();
         $(".dashboard-link").show();
@@ -34,6 +43,11 @@ $(document).ready(function() {
         $(dashboardBody).show();
         $(callBody).hide();
         $(commitmentTable).hide();
+
+    });
+
+    $("input#calculate").click(function () {
+     $(".hidden-commitment-columns").show();
 
     });
 

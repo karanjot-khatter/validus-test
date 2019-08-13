@@ -28,3 +28,4 @@ order to invest in a new investment.
 - https://www.w3schools.com/css/css_table.asp - table creation
 - https://www.php.net/manual/en/function.date.php - date format
 - https://www.php.net/manual/en/function.number-format.php - number format
+-https://stackoverflow.com/questions/5733808/submit-form-and-stay-on-same-page - submit form and stay on same page (JQUERY)

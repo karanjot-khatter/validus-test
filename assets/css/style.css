@@ -168,8 +168,17 @@ input#calculate:hover {
     font-size: 12px;
     width: 200px;
     padding-left: 40px;
+    vertical-align: bottom;
 }
 
 .commitment-table td{
     font-size: 12px;
+}
+
+.hidden-input{
+    background-color:#FCE4D6;
+}
+
+.hidden-commitment-columns{
+    display:none;
 }

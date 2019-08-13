@@ -1,6 +1,7 @@
 <?php
 include_once("includes/database.php");
 include_once("includes/utilities.php");
+
 ?>
 
 <link rel="stylesheet" type="text/css" href="assets/css/style.css">
@@ -68,11 +69,11 @@ include_once("includes/utilities.php");
 
     <div class="submit-form-fields">
 
-        <form action="includes/utilities.php">
+        <form name="valform" action="includes/utilities.php" method="POST">
 
             <div class="section">
                 <label>Date</label>
-                <input type="text" id='date' name="date" placeholder="<?php echo date("d/m/Y")?>" disabled>
+                <input type="text" id='date' name="date" placeholder="<?php echo date("d/m/Y")?>"disabled>
             </div>
 
             <div class="section">
@@ -82,17 +83,16 @@ include_once("includes/utilities.php");
 
             <div class="section">
                 <label>Investment Name</label>
-                <input type="text" id="name" name="name" placeholder="<?php echo 'Investment' . ' '. ++$id ?>" disabled>
+                <input type="text" id="name" name="name" value="<?php echo 'Investment' . ' '. ++$id ?>">
             </div>
 
             <div class="section">
                 <label>Capital Required for Investment</label>
                 <input id='currency' placeholder="$" disabled>
-                <input id="capital" datatype="currency" type="text" name="capital" placeholder="10,000,000.00">
+                <input id="capital" datatype="currency" type="text" name="capital" value="10,000,000.00">
             </div>
 
-
-        <input type="submit" id="calculate" value="Calculate">
+            <input type="submit" id="calculate" value="Calculate">
 
         </form>
     </div>
@@ -107,6 +107,8 @@ include_once("includes/utilities.php");
                     <th>Fund</th>
                     <th>Commited Amounts</th>
                     <th>Undrawn Capital Commitment before Current Drawdown Notice</th>
+                    <th class="hidden-commitment-columns">Total Drawdown Notice</th>
+                    <th class="hidden-commitment-columns">Undrawn Capital Commitment after Current Drawdown Notice</th>
                 </tr>
 
                 <tr>
@@ -122,14 +124,18 @@ include_once("includes/utilities.php");
 
                         ?>
                     <td><strong><?php echo $commitmentId ?></strong></td>
-                        <td><strong><?php echo $commitmentFund ?></strong></td>
+                    <td><strong><?php echo $commitmentFund ?></strong></td>
                     <td><?php echo $ukDate ?></td>
                     <td style="text-align: left;"><?php echo 'fund '. $commitmentFund ?></td>
                     <td><?php echo $commitmentAmount ?></td>
-
                     <td><?php echo $fundInvestment ?> </td>
+                    <td class="hidden-commitment-columns hidden-input"></td>
+                    <td class="hidden-commitment-columns hidden-input"></td>
                 </tr>
-                    <?php endforeach ?>
+
+                <?php endforeach ?>
+
+
 
 
             </table>
