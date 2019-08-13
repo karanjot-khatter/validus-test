@@ -27,3 +27,4 @@ order to invest in a new investment.
 - https://www.w3schools.com/php/php_mysql_select.asp -connect php to sql
 - https://www.w3schools.com/css/css_table.asp - table creation
 - https://www.php.net/manual/en/function.date.php - date format
+- https://www.php.net/manual/en/function.number-format.php - number format

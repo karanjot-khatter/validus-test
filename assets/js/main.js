@@ -4,30 +4,36 @@ $(document).ready(function() {
         $(".callLogo").show();
         $(".dashboard-link").show();
         $(".new-call-link").show();
+        $('.commitment-table').hide();
+
     }
 
     $(".new-call-link").click(function (e) {
         e.preventDefault();
         var nonClickedLink = $('.dashboard-link');
         var dashboardBody = $('.dashboard-body');
-        var callBody = $('.new-call-body');
+        var callBody = $('.submit-form-fields');
+        var commitmentTable = $('.commitment-table');
         var clickedLink = $(this);
         clickedProperties(clickedLink);
         nonClickedProperties(nonClickedLink);
         $(dashboardBody).hide();
         $(callBody).show();
+        $(commitmentTable).show();
     });
 
     $(".dashboard-link").click(function (e) {
         e.preventDefault();
         var nonClickedLink = $('.new-call-link');
-        var callBody = $('.new-call-body');
+        var callBody = $('.submit-form-fields');
         var dashboardBody = $('.dashboard-body');
+        var commitmentTable = $('.commitment-table');
         var clickedLink = $(this);
         clickedProperties(clickedLink);
         nonClickedProperties(nonClickedLink);
         $(dashboardBody).show();
         $(callBody).hide();
+        $(commitmentTable).hide();
 
     });
 

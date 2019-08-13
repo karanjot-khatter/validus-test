@@ -133,5 +133,73 @@ function getFundData()
     return $funds;
 }
 
+/*
+ * @desc -  The query gets all data from the data_commitment table.
+ * Used globally in call.phtml
+ * @return - The 5 arrays populated in the data_fund table...
+ */
+function getCommitmentData()
+{
+    openConnection();
+
+    global $mysqli;
+
+    $q = "SELECT * from data_commitment";
+
+    $res = $mysqli->query($q);
+
+    if ($res->num_rows > 0)
+    {
+        //empty array
+        $commitment = [];
+
+        while ($row = $res->fetch_assoc()) {
+            //push rows from database into the array
+            $commitment[] = $row;
+        }
+    }
+    else {
+        echo "0 results";
+    }
+
+    closeConnection();
+
+    return $commitment;
+}
+
+/*
+ * @desc - The query below gets info from data fund investment table, if a match in commitment id..
+ *  Used globally in call.phtml
+ * @return - array of info... null if not exists
+ * @params -$commitmentId
+ */
+function getCommitmentInvestment($commitmentId) {
+    openConnection();
+
+    global $mysqli;
+
+    $q = "SELECT * from data_fund_investment dfi
+where dfi.commitment_id = '$commitmentId'";
+
+    $res = $mysqli->query($q);
+
+    if ($res->num_rows > 0)
+    {
+        //empty array
+        $investment = [];
+
+        while ($row = $res->fetch_assoc()) {
+            //push rows from database into the array
+            $investment[] = $row;
+        }
+    }
+
+    closeConnection();
+
+    return $investment;
+
+}
+
+
 
 

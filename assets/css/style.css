@@ -64,10 +64,6 @@
     text-decoration: none;
 }
 
-.new-call-body{
-    display:none;
-}
-
 .dashboard-body {
     padding-top: 3rem;
     right: 30%;
@@ -93,33 +89,34 @@ table {
     width: 100%;
 }
 
-.new-call-body{
+.submit-form-fields{
     margin: auto;
-    left: 10%;
+    left: 2%;
     width: 500px;
     padding-top: 4rem;
     position: absolute;
+    display:none;
 }
-.new-call-body label, .new-call-body input {
+.submit-form-fields label, .submit-form-fields input {
     font-size: 12px;
     float: left;
     color: black;
     position: relative;
     display: inline-block;
 }
-.new-call-body input {
+.submit-form-fields input {
     width: 50%;
     border: 1px solid gray;
 }
 
-.new-call-body label {
+.submit-form-fields label {
     font-weight: bold;
     width: 40%;
     text-align: right;
     padding-right: 10px;
 }
 
-.new-call-body input::placeholder{
+.submit-form-fields input::placeholder{
     color:black;
     text-align: left;
 }
@@ -140,7 +137,7 @@ input#calculate {
     text-align: center;
 }
 
-.new-call-body .section{
+.submit-form-fields .section{
     height: 2rem;
 }
 
@@ -156,4 +153,23 @@ input#capital{
 
 input#calculate:hover {
     background-color:blue;
+}
+
+.commitment-table {
+    width: 40%;
+    margin-left: auto;
+    margin-right: 20%;
+    margin-top: 2%;
+}
+
+.commitment-table th{
+    font-weight: unset;
+    border-bottom: 1px solid gray;
+    font-size: 12px;
+    width: 200px;
+    padding-left: 40px;
+}
+
+.commitment-table td{
+    font-size: 12px;
 }
