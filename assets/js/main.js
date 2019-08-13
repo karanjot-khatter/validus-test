@@ -1,14 +1,5 @@
 $(document).ready(function() {
 
-    var $form = $('form');
-    $form.submit(function(){
-        $.post($(this).attr('action'), $(this).serialize(), function(response){
-            // $(".hidden-commitment-columns").show();
-        },'json');
-        return false;
-    });
-
-
     if ($("#fund-info" ).length > 0) {
         $(".callLogo").show();
         $(".dashboard-link").show();
@@ -45,12 +36,6 @@ $(document).ready(function() {
         $(commitmentTable).hide();
 
     });
-
-    $("input#calculate").click(function () {
-     $(".hidden-commitment-columns").show();
-
-    });
-
     function clickedProperties(clickedLink)
     {
         $(clickedLink).css('color', 'black');
@@ -65,4 +50,21 @@ $(document).ready(function() {
         $(nonClickedLink).css('border-bottom', 'none');
         $(nonClickedLink).prop('disabled', false);
     }
+
+    $('#callform').submit( function (e) {
+        alert('test'); //popup twice...?  maybe label and input gets called on click!
+        e.preventDefault();
+        var submitButton =  $('input#calculate');
+        $(submitButton).prop('disabled', true);
+        $(submitButton).css('background-color', 'gray');
+        $(".hidden-commitment-columns").show();
+        $.ajax({
+            dataType: 'json',
+            async: true,
+            data: $('#callform').serialize(),
+            success: function(data) {
+                // console.log('data');
+            }
+        });
+    });
 });

@@ -149,6 +149,8 @@ input#currency {
 input#capital{
     width: 45%;
     border-left:none;
+    text-align: right;
+
 }
 
 input#calculate:hover {

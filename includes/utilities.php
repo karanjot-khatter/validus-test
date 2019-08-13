@@ -2,19 +2,14 @@
 
 include_once("includes/database.php");
 
-if (isset($_POST["capital"])) {
-    $date = date('Y-m-d');
-    $capital = $_POST["capital"];
-    $name = $_POST['name'];
-}
 
 /*
- * @desc -  The below logic calculates current notice taking away
+ * @desc -  The below logic calculates values in the current notice column.
  * Used globally in call.phtml
  * @return - string value of calculated cost
  * @params -$commitmentId, $commitmentAmount
  */
-function calculateTotalFundsRemaining ($commitmentId, $commitmentAmount)
+function beforeCurrentNotice ($commitmentId, $commitmentAmount)
 {
     $total = turnIntoFloat($commitmentAmount);
     $commitments = getCommitmentInvestment($commitmentId);
@@ -35,7 +30,7 @@ function calculateTotalFundsRemaining ($commitmentId, $commitmentAmount)
 }
 /*
  * @desc -  The below logic turns the $total paramater into a float.
- * Used globally in call.phtml
+ * Used ONLY WITHIN THIS FILE.
  * @return - float value
  * @params -$total
  */
@@ -44,6 +39,35 @@ function turnIntoFloat($total) {
     $float = (float) $removeString;
 
     return $float;
+}
+
+/*
+ * @desc -  The below logic calculates values in the total Notice column
+ * Used globally in call.phtml
+ * @return -
+ * @params -$paramCapital, $beforeCurrentNotice
+ */
+function totalNotice($paramCapital, $beforeCurrentNotice)
+{
+
+    $currentNotice = turnIntoFloat($beforeCurrentNotice);
+
+    if ($paramCapital > 0) {
+
+        if ($paramCapital - $currentNotice >= 0){
+            return $currentNotice;
+        }
+
+        else {
+            return $paramCapital;
+        }
+
+    }
+
+    else {
+        return false;
+    }
+
 }
 
 ?>
