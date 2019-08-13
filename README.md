@@ -8,7 +8,8 @@ order to invest in a new investment.
 - On the dashboard, you are able to view all confirmed investment funds.
 - Also on the dashboard you are able to click 'new call' link on the top right, which is in gray.
 - The dashboard link is disabled, unless you are on the new call page. 
-- On the new call page...
+- On the new call page you are given a form, with a submit button, you can able to enter a value into this form.
+- Once the button has been submitted, two new fields appear in red. 
 
 # Implementation
 - Tables created and values inserted in mySQL database - called 'validus'. (Navicat)

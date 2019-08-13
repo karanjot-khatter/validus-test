@@ -52,7 +52,7 @@ $(document).ready(function() {
     }
 
     $('#callform').submit( function (e) {
-        alert('test'); //popup twice...?  maybe label and input gets called on click!
+        // alert('test'); //popup twice...?  maybe label and input gets called on click!
         e.preventDefault();
         var submitButton =  $('input#calculate');
         $(submitButton).prop('disabled', true);

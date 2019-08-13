@@ -40,6 +40,7 @@ include_once("includes/utilities.php");
        <?php
            $date = $call['date'];
            $ukDate = date("d/m/Y", strtotime($date));
+
        ?>
            <tr>
                 <td><?php echo $ukDate; ?></td>
@@ -100,11 +101,11 @@ include_once("includes/utilities.php");
 
     <?php
 
-    if (isset($_POST["capital"])) {
+    if (isset($_GET["capital"])) {
         //strip tags - removes threat of sql injection...
-        $paramCapital = strip_tags($_POST["capital"]);
+        $paramCapital = strip_tags($_GET["capital"]);
         $paramCapital = turnIntoFloat($paramCapital);
-        $paramName = strip_tags($_POST['name']);
+        $paramName = strip_tags($_GET['name']);
         $usDate = date('Y/m/d');
 
     }
