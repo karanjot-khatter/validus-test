@@ -2,6 +2,8 @@
 
 include_once("includes/database.php");
 
+$capital = null;
+
 
 /*
  * @desc -  The below logic calculates values in the current notice column.
@@ -50,24 +52,30 @@ function turnIntoFloat($total) {
 function totalNotice($paramCapital, $beforeCurrentNotice)
 {
 
-    $currentNotice = turnIntoFloat($beforeCurrentNotice);
+$currentNotice = turnIntoFloat($beforeCurrentNotice);
 
-    if ($paramCapital > 0) {
+    if ($paramCapital > $currentNotice) {
 
-        if ($paramCapital - $currentNotice >= 0){
-            return $currentNotice;
-        }
+        $difference = $paramCapital - $currentNotice;
 
-        else {
-            return $paramCapital;
-        }
+        $reversedDifference = reversedNotice($paramCapital, $difference);
+
+        return $reversedDifference;
+
+    } else {
+
+        return $paramCapital;
 
     }
 
-    else {
-        return false;
-    }
+}
 
+function reversedNotice ($paramCapital, $difference)
+{
+
+    $difference = $paramCapital - $difference;
+
+    return $difference;
 }
 
 ?>
