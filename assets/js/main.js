@@ -50,21 +50,4 @@ $(document).ready(function() {
         $(nonClickedLink).css('border-bottom', 'none');
         $(nonClickedLink).prop('disabled', false);
     }
-
-    $('#callform').submit( function (e) {
-        // alert('test'); //popup twice...?  maybe label and input gets called on click!
-        e.preventDefault();
-        var submitButton =  $('input#calculate');
-        $(submitButton).prop('disabled', true);
-        $(submitButton).css('background-color', 'gray');
-        $(".hidden-commitment-columns").show();
-        $.ajax({
-            dataType: 'json',
-            async: true,
-            data: $('#callform').serialize(),
-            success: function(data) {
-                // console.log('data');
-            }
-        });
-    });
 });

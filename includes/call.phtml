@@ -70,7 +70,7 @@ include_once("includes/utilities.php");
 
     <div class="submit-form-fields">
 
-        <form id="callform" method="POST">
+        <form id="callform" method="post">
 
             <div class="section">
                 <label>Date</label>
@@ -93,7 +93,7 @@ include_once("includes/utilities.php");
                 <input id="capital" type="text" name="capital" value="10,000,000">
             </div>
 
-            <input id='calculate' type="submit" id="calculate" value="Calculate" onclick="ValidateHidePrivate()">
+            <input type="submit" id="calculate" value="Calculate" onclick="">
 
         </form>
 
@@ -101,11 +101,11 @@ include_once("includes/utilities.php");
 
     <?php
 
-    if (isset($_GET["capital"])) {
+    if (isset($_POST["capital"])) {
         //strip tags - removes threat of sql injection...
-        $paramCapital = strip_tags($_GET["capital"]);
+        $paramCapital = strip_tags($_POST["capital"]);
         $paramCapital = turnIntoFloat($paramCapital);
-        $paramName = strip_tags($_GET['name']);
+        $paramName = strip_tags($_POST['name']);
         $usDate = date('Y/m/d');
 
     }
@@ -137,9 +137,11 @@ include_once("includes/utilities.php");
                         $ukDate =  date("d/m/Y", strtotime($commitmentDate));
                         $beforeCurrentNotice = beforeCurrentNotice($commitmentId, $commitmentAmount);
 
-                        $notice = totalNotice($paramCapital, $beforeCurrentNotice);
-
-                        $paramCapital = $paramCapital - $notice;
+                        if (isset($_POST["capital"])) {
+                            $notice = totalNotice($paramCapital, $beforeCurrentNotice);
+                             echo $notice;
+                            $paramCapital = $paramCapital - $notice;
+                        }
 
 
                         ?>
@@ -149,14 +151,11 @@ include_once("includes/utilities.php");
                     <td style="text-align: left;"><?php echo 'fund '. $commitmentFund ?></td>
                     <td><?php echo $commitmentAmount ?></td>
                     <td><?php echo $beforeCurrentNotice ?></td>
-                    <td class="hidden-commitment-columns hidden-input"><?php echo $notice ? number_format($notice, 2) : '-'?></td>
+                    <td class="hidden-commitment-columns hidden-input"><?php echo (isset($notice)) ? (number_format($notice, 2)) : '-'?></td>
                     <td class="hidden-commitment-columns hidden-input"><?php echo '' ?></td>
                 </tr>
 
                 <?php endforeach ?>
-
-
-
 
             </table>
 
@@ -165,3 +164,27 @@ include_once("includes/utilities.php");
 </div>
 
 </body>
+
+<script type="text/javascript">
+
+    jQuery(document).ready(function ($) {
+
+        $('#callform').submit(function (e) {
+            // now only fires once..
+            // alert('test');
+            var submitButton =  $('input#calculate');
+            e.preventDefault();
+                $.ajax({
+                    type: 'post',
+                    data: $('#callform').serialize(),
+                    success: function () {
+                        $(submitButton).css('background-color', 'gray');
+                        $(".hidden-commitment-columns").show();
+                        $(submitButton).prop('disabled', true);
+                    }
+                });
+
+        });
+    });
+
+</script>
