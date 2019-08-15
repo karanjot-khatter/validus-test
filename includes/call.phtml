@@ -158,6 +158,10 @@ include_once("includes/utilities.php");
             </tr>
             <?php endforeach; ?>
         </table>
+
+
+        <input type="submit" id="confirm" value="Confirm">
+
     </div>
     <?php endif; ?>
 
@@ -177,10 +181,13 @@ include_once("includes/utilities.php");
 
             $(form).submit();
 
+            $(this).remove();
+
+
             // alert('test');
             // now only fires once..
-            $(this).css('background-color', 'gray');
-            $(this).prop('disabled', true);
+            // $(this).css('background-color', 'gray');
+            // $(this).prop('disabled', true);
 
         });
 

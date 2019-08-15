@@ -124,7 +124,7 @@ input#date::placeholder, input#capital::placeholder  {
      text-align: right;
 }
 
-input#calculate {
+input#calculate, input#confirm  {
     top: 4rem;
     left: 10rem;
     color: white;
@@ -152,7 +152,7 @@ input#capital{
 
 }
 
-input#calculate:hover {
+input#calculate:hover, input#confirm:hover {
     background-color:blue;
 }
 
@@ -180,9 +180,13 @@ input#calculate:hover {
     background-color:#FCE4D6;
 }
 
-table#notice {
+table#notice, input#confirm {
     left: 40%;
     width: 300px;
     position: absolute;
     top: 25rem;
+}
+
+input#confirm{
+    top: 35rem;
 }
