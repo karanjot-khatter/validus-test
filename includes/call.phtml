@@ -10,6 +10,14 @@ include_once("includes/utilities.php");
 
 
 <body>
+
+<?php foreach (getDataCall() as $call): ?>
+    <?php
+        $id = $call['call_id'];
+        $newID = ++$id;
+    ?>
+
+<?php endforeach; ?>
 <div id="new-call-body">
 
     <div class="submit-form-fields">
@@ -28,7 +36,7 @@ include_once("includes/utilities.php");
 
             <div class="section">
                 <label>Investment Name</label>
-                <input type="text" id="name" name="name" value="<?php echo 'Investment' . ' '. ++$id ?>"readonly>
+                <input type="text" id="name" name="name" value="<?php echo 'Investment' . ' '. $newID ?>"readonly>
             </div>
 
             <div class="section">
@@ -37,6 +45,7 @@ include_once("includes/utilities.php");
                 <input id="capital" type="text" name="capital" value="10,000,000">
             </div>
 
+            <input type="hidden" id="callId" name="callId" value="<?php echo $newID ?>">
             <input type="submit" id="calculate" value="Calculate">
 
         </form>
@@ -50,7 +59,7 @@ include_once("includes/utilities.php");
         $paramCapital = strip_tags($_POST["capital"]);
         $paramCapital = turnIntoFloat($paramCapital);
         $paramName = strip_tags($_POST['name']);
-        $usDate = date('Y/m/d');
+        $usDate = date('Y-m-d');
 
     }
 
@@ -98,6 +107,7 @@ include_once("includes/utilities.php");
 
 
                         ?>
+
                     <td><strong><?php echo $commitmentId ?></strong></td>
                     <td><strong><?php echo $commitmentFund ?></strong></td>
                     <td><?php echo $ukDate ?></td>
@@ -154,23 +164,23 @@ include_once("includes/utilities.php");
 
                 ?>
 
+                <form id="confirmform" method="post" action="dashboard.php">
+
+                    <input type="submit" id="confirm" value="Confirm">
+
+                    <input type="hidden" id="capital" name="capital" value="<?php echo  $_POST["capital"] ?>">
+                    <input type="hidden" id="cId" name="cId" value="<?php echo  $_POST["callId"] ?>">
+                    <input type="hidden" id="date" name="date" value="<?php echo  $usDate ?>">
+                    <input type="hidden" id="name" name="name" value="<?php echo  $paramName ?>">
+
+                </form>
+
             <td class="red-background" style="text-align: left"><?php echo 'fund '. $commitmentFund ?></td>
                 <td class="red-background"><?php echo $totalNotice ? number_format($totalNotice, 2) : '-' ?></td>
                 <td class="red-background"> </td>
             </tr>
             <?php endforeach; ?>
         </table>
-
-        <form id="confirmform" method="post" action="dashboard.php">
-
-            <input type="submit" id="confirm" value="Confirm" onclick="insert()">
-
-
-        </form>
-
-
-
-
 
     </div>
     <?php endif; ?>
