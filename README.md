@@ -9,7 +9,9 @@ order to invest in a new investment.
 - Also on the dashboard you are able to click 'new call' link on the top right, which is in gray.
 - The dashboard link is disabled, unless you are on the new call page. 
 - On the new call page you are given a form, with a submit button, you can able to enter a value into this form.
-- Once the button has been submitted, two new fields appear in red. 
+- Once the button has been submitted, you should see calculations for total notice and total undrawn notice.
+- You should then be prompted with a 'confirm' button, when if clicked it returns to dashboard page.
+- HOWEVER CLICKING THE BUTTON DOES NOT INSERT RECORDS INTO DB. (everything complete except this step.)
 
 # Implementation
 - Tables created and values inserted in mySQL database - called 'validus'. (Navicat)

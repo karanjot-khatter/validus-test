@@ -161,8 +161,16 @@ include_once("includes/utilities.php");
             <?php endforeach; ?>
         </table>
 
+        <form id="confirmform" method="post" action="dashboard.php">
 
-        <input type="submit" id="confirm" value="Confirm">
+            <input type="submit" id="confirm" value="Confirm" onclick="insert()">
+
+
+        </form>
+
+
+
+
 
     </div>
     <?php endif; ?>
