@@ -125,7 +125,8 @@ include_once("includes/utilities.php");
         <table id="notice">
             <tr>
                 <th class="red-background"></th>
-                <th class="red-background">Total Drawdown Notice </th>
+                <th class="red-background" style="width:35%">Total Drawdown Notice </th>
+                <th class="red-background" style="border-bottom: none;" > </th>
             </tr>
 
             <tr>
@@ -153,8 +154,9 @@ include_once("includes/utilities.php");
 
                 ?>
 
-            <td class="red-background" style="text-align: left;"><?php echo 'fund '. $commitmentFund ?></td>
+            <td class="red-background" style="text-align: left"><?php echo 'fund '. $commitmentFund ?></td>
                 <td class="red-background"><?php echo $totalNotice ? number_format($totalNotice, 2) : '-' ?></td>
+                <td class="red-background"> </td>
             </tr>
             <?php endforeach; ?>
         </table>
@@ -169,28 +171,3 @@ include_once("includes/utilities.php");
 
 </div>
 </body>
-
-
-<script type="text/javascript">
-
-    jQuery(document).ready(function ($) {
-
-        $('#calculate').click(function () {
-
-            var form = $("#callform");
-
-            $(form).submit();
-
-            $(this).remove();
-
-
-            // alert('test');
-            // now only fires once..
-            // $(this).css('background-color', 'gray');
-            // $(this).prop('disabled', true);
-
-        });
-
-    });
-
-</script>

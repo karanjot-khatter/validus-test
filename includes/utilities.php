@@ -1,10 +1,6 @@
 <?php
 
 include_once("includes/database.php");
-
-$capital = null;
-
-
 /*
  * @desc -  The below logic calculates values in the current notice column.
  * Used globally in call.phtml

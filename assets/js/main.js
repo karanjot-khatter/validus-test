@@ -1,23 +1,39 @@
 $(document).ready(function() {
 
+    var dashboardLink = $(".dashboard-link");
+    var callLink =  $(".new-call-link");
+
     if ($("#welcomeBody" ).length > 0) {
         $(".callLogo").hide();
-        $(".dashboard-link").hide();
-        $(".new-call-link").hide();
+        $(dashboardLink).hide();
+        $(callLink).hide();
     }
 
-    $(".dashboard-link").click(function () {
+    $(dashboardLink).click(function () {
         var clickedLink = $(this);
         var nonClickedLink = $(".new-call-link");
         clickedProperties(clickedLink);
         nonClickedProperties(nonClickedLink);
     });
 
-    $(".new-call-link").click(function () {
+    $(callLink).click(function() {
         var nonClickedLink = $(".dashboard-link");
         var clickedLink = $(this);
         clickedProperties(clickedLink);
         nonClickedProperties(nonClickedLink);
+    });
+
+    $('#calculate').click(function () {
+        // alert('test');
+
+        var form = $("#callform");
+
+        $(form).submit();
+
+
+        $(this).css('background-color', 'gray');
+        $(this).prop('disabled', true);
+
     });
 
     function clickedProperties(clickedLink)

@@ -180,13 +180,17 @@ input#calculate:hover, input#confirm:hover {
     background-color:#FCE4D6;
 }
 
-table#notice, input#confirm {
+table#notice {
     left: 40%;
-    width: 300px;
+    width: 400px;
     position: absolute;
     top: 25rem;
 }
 
 input#confirm{
     top: 35rem;
+    width: 32rem;
+    height: 2em;
+    left: 35%;
+    position: absolute;
 }
