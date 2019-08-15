@@ -78,4 +78,20 @@ function reversedNotice ($paramCapital, $difference)
     return $difference;
 }
 
+function undrawnCapital($beforeCurrentNotice, $notice) {
+
+    $beforeNotice = turnIntoFloat($beforeCurrentNotice);
+
+    if ($notice) {
+        if ($beforeNotice - $notice == 0) {
+            return 0;
+        } else{
+            $difference = $beforeNotice - $notice;
+            return $difference;
+        }
+    }
+
+    return $beforeNotice;
+}
+
 ?>

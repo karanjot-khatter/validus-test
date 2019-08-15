@@ -1,0 +1,66 @@
+<?php
+include_once("includes/database.php");
+include_once("includes/utilities.php");
+
+?>
+
+<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script src="assets/js/main.js"></script>
+
+
+<body>
+<div id="fund-info">
+    <div class="dashboard-body">
+
+        <table>
+            <tr>
+                <td></td>
+                <td></td>
+                <?php foreach (getFundData() as $fund) :?>
+                    <?php
+                    $fundId = $fund['fund_id'];
+                    ?>
+                    <td style="color: gray"><?php echo $fundId?></td>
+                <?php endforeach ?>
+            </tr>
+
+            <tr>
+                <th>Date</th>
+                <th>Call #</th>
+                <?php foreach (getFundData() as $fund) :?>
+                    <?php
+                    $fundName = $fund['fund_name'];
+                    ?>
+                    <th><?php echo $fundName ?></th>
+                <?php endforeach ?>
+            </tr>
+            <?php foreach (getDataCall() as $call): ?>
+
+                <?php
+                $date = $call['date'];
+                $ukDate = date("d/m/Y", strtotime($date));
+
+                ?>
+                <tr>
+                    <td><?php echo $ukDate; ?></td>
+                    <td><?php echo $id = $call['call_id']; ?></td>
+                    <?php foreach (getFundData() as $fund) :?>
+                        <?php
+                        $fundId = $fund['fund_id'];
+                        $fundInvestment = getFundInvestment($id, $fundId );
+                        ?>
+                        <?php if ($capitalRequirement = $fundInvestment['investment_amount']):?>
+                            <td><?php echo $capitalRequirement?></td>
+                        <?php else: ?>
+                            <td><?php echo '-'?></td>
+                        <?php endif;?>
+                    <?php endforeach ?>
+                </tr>
+
+            <?php endforeach ?>
+
+        </table>
+    </div>
+</div>
+</body>

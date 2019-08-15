@@ -10,62 +10,6 @@ include_once("includes/utilities.php");
 
 
 <body>
-<div id="fund-info">
-    <div class="dashboard-body">
-
-        <table>
-            <tr>
-                <td></td>
-                <td></td>
-                <?php foreach (getFundData() as $fund) :?>
-                    <?php
-                    $fundId = $fund['fund_id'];
-                    ?>
-                <td style="color: gray"><?php echo $fundId?></td>
-                <?php endforeach ?>
-            </tr>
-
-            <tr>
-                <th>Date</th>
-                <th>Call #</th>
-                <?php foreach (getFundData() as $fund) :?>
-                <?php
-                $fundName = $fund['fund_name'];
-                ?>
-                <th><?php echo $fundName ?></th>
-                <?php endforeach ?>
-            </tr>
-       <?php foreach (getDataCall() as $call): ?>
-
-       <?php
-           $date = $call['date'];
-           $ukDate = date("d/m/Y", strtotime($date));
-
-       ?>
-           <tr>
-                <td><?php echo $ukDate; ?></td>
-                <td><?php echo $id = $call['call_id']; ?></td>
-                <?php foreach (getFundData() as $fund) :?>
-                <?php
-                $fundId = $fund['fund_id'];
-                $fundInvestment = getFundInvestment($id, $fundId );
-                ?>
-                <?php if ($capitalRequirement = $fundInvestment['investment_amount']):?>
-                    <td><?php echo $capitalRequirement?></td>
-                    <?php else: ?>
-                        <td><?php echo '-'?></td>
-                <?php endif;?>
-        <?php endforeach ?>
-            </tr>
-
-       <?php endforeach ?>
-
-        </table>
-    </div>
-</div>
-</body>
-
-<body>
 <div id="new-call-body">
 
     <div class="submit-form-fields">
@@ -93,7 +37,7 @@ include_once("includes/utilities.php");
                 <input id="capital" type="text" name="capital" value="10,000,000">
             </div>
 
-            <input type="submit" id="calculate" value="Calculate" onclick="">
+            <input type="submit" id="calculate" value="Calculate">
 
         </form>
 
@@ -122,8 +66,10 @@ include_once("includes/utilities.php");
                     <th>Fund</th>
                     <th>Commited Amounts</th>
                     <th>Undrawn Capital Commitment before Current Drawdown Notice</th>
-                    <th class="hidden-commitment-columns">Total Drawdown Notice</th>
-                    <th class="hidden-commitment-columns">Undrawn Capital Commitment after Current Drawdown Notice</th>
+                    <?php if (isset($_POST['capital'])) : ?>
+                    <th>Total Drawdown Notice</th>
+                    <th>Undrawn Capital Commitment after Current Drawdown Notice</th>
+                    <?php endif; ?>
                 </tr>
 
                 <tr>
@@ -140,14 +86,14 @@ include_once("includes/utilities.php");
                         if (isset($_POST["capital"])) {
                             if ($paramCapital > 0) {
                                 $totalNotice = totalNotice($paramCapital, $beforeCurrentNotice);
-                                echo $totalNotice;
-
                                 $paramCapital = $paramCapital - $totalNotice;
 
                             } else{
-
                                 $totalNotice = 0;
                             }
+
+                            $undrawnCapital = undrawnCapital($beforeCurrentNotice, $totalNotice);
+
                         }
 
 
@@ -158,37 +104,36 @@ include_once("includes/utilities.php");
                     <td style="text-align: left;"><?php echo 'fund '. $commitmentFund ?></td>
                     <td><?php echo $commitmentAmount ?></td>
                     <td><?php echo $beforeCurrentNotice ?></td>
-                    <td class="hidden-commitment-columns hidden-input"><?php echo (isset($_POST["capital"])) ? number_format($totalNotice, 2) : '-' ?></td>
-                    <td class="hidden-commitment-columns hidden-input"><?php echo '' ?></td>
+                    <?php if (isset($_POST['capital'])) : ?>
+                    <td class="hidden-input"><?php echo $totalNotice ? number_format($totalNotice, 2) : '-' ?></td>
+                    <td class="hidden-input"><?php echo $undrawnCapital ? number_format($undrawnCapital, 2): '-' ?></td>
+                    <?php endif;?>
                 </tr>
 
                 <?php endforeach ?>
-
             </table>
-
         </div>
-
 </div>
-
 </body>
+
 
 <script type="text/javascript">
 
     jQuery(document).ready(function ($) {
 
+        $('#calculate').click(function () {
 
-        $('#callform').submit(function () {
-            // now only fires once..
+            var form = $("#callform");
+
+            $(form).submit();
+
             // alert('test');
-            var submitButton =  $('input#calculate');
-            $.post($(this).attr('action'), $(this).serialize(), function(response){
-                // do something here on success
-            },'json');
-            $(submitButton).css('background-color', 'gray');
-            $(".hidden-commitment-columns").show();
-            $(submitButton).prop('disabled', true);
-            return false;
+            // now only fires once..
+            $(this).css('background-color', 'gray');
+            $(this).prop('disabled', true);
+
         });
+
     });
 
 </script>

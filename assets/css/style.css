@@ -30,7 +30,6 @@
 }
 
 .new-call-link, .dashboard-link, .callLogo {
-    display:none;
     top: 1.5rem;
     font-size: 14px;
     position:absolute;
@@ -95,7 +94,7 @@ table {
     width: 500px;
     padding-top: 4rem;
     position: absolute;
-    display:none;
+    /*display:none;*/
 }
 .submit-form-fields label, .submit-form-fields input {
     font-size: 12px;
@@ -179,8 +178,4 @@ input#calculate:hover {
 
 .hidden-input{
     background-color:#FCE4D6;
-}
-
-.hidden-commitment-columns{
-    display:none;
 }

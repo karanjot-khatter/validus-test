@@ -1,41 +1,25 @@
 $(document).ready(function() {
 
-    if ($("#fund-info" ).length > 0) {
-        $(".callLogo").show();
-        $(".dashboard-link").show();
-        $(".new-call-link").show();
-        $('.commitment-table').hide();
-
+    if ($("#welcomeBody" ).length > 0) {
+        $(".callLogo").hide();
+        $(".dashboard-link").hide();
+        $(".new-call-link").hide();
     }
 
-    $(".new-call-link").click(function (e) {
-        e.preventDefault();
-        var nonClickedLink = $('.dashboard-link');
-        var dashboardBody = $('.dashboard-body');
-        var callBody = $('.submit-form-fields');
-        var commitmentTable = $('.commitment-table');
+    $(".dashboard-link").click(function () {
+        var clickedLink = $(this);
+        var nonClickedLink = $(".new-call-link");
+        clickedProperties(clickedLink);
+        nonClickedProperties(nonClickedLink);
+    });
+
+    $(".new-call-link").click(function () {
+        var nonClickedLink = $(".dashboard-link");
         var clickedLink = $(this);
         clickedProperties(clickedLink);
         nonClickedProperties(nonClickedLink);
-        $(dashboardBody).hide();
-        $(callBody).show();
-        $(commitmentTable).show();
     });
 
-    $(".dashboard-link").click(function (e) {
-        e.preventDefault();
-        var nonClickedLink = $('.new-call-link');
-        var callBody = $('.submit-form-fields');
-        var dashboardBody = $('.dashboard-body');
-        var commitmentTable = $('.commitment-table');
-        var clickedLink = $(this);
-        clickedProperties(clickedLink);
-        nonClickedProperties(nonClickedLink);
-        $(dashboardBody).show();
-        $(callBody).hide();
-        $(commitmentTable).hide();
-
-    });
     function clickedProperties(clickedLink)
     {
         $(clickedLink).css('color', 'black');
