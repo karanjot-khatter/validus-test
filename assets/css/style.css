@@ -176,6 +176,13 @@ input#calculate:hover {
     font-size: 12px;
 }
 
-.hidden-input{
+.red-background{
     background-color:#FCE4D6;
+}
+
+table#notice {
+    left: 40%;
+    width: 300px;
+    position: absolute;
+    top: 25rem;
 }

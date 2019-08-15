@@ -105,14 +105,64 @@ include_once("includes/utilities.php");
                     <td><?php echo $commitmentAmount ?></td>
                     <td><?php echo $beforeCurrentNotice ?></td>
                     <?php if (isset($_POST['capital'])) : ?>
-                    <td class="hidden-input"><?php echo $totalNotice ? number_format($totalNotice, 2) : '-' ?></td>
-                    <td class="hidden-input"><?php echo $undrawnCapital ? number_format($undrawnCapital, 2): '-' ?></td>
+                    <td class="red-background"><?php echo $totalNotice ? number_format($totalNotice, 2) : '-' ?></td>
+                    <td class="red-background"><?php echo $undrawnCapital ? number_format($undrawnCapital, 2): '-' ?></td>
                     <?php endif;?>
                 </tr>
 
-                <?php endforeach ?>
+                <?php endforeach; ?>
             </table>
         </div>
+
+    <?php
+        $newCapital = strip_tags($_POST["capital"]);
+        $newCapital = turnIntoFloat($newCapital);
+
+        ?>
+
+    <?php if (isset($_POST["capital"])) : ?>
+    <div class="notice-table">
+        <table id="notice">
+            <tr>
+                <th class="red-background"></th>
+                <th class="red-background">Total Drawdown Notice </th>
+            </tr>
+
+            <tr>
+            <?php foreach (getCommitmentData() as $commitmentData) :?>
+
+
+                <?php
+                $commitmentId = $commitmentData['id'];
+                $commitmentFund = $commitmentData['fund_id'];
+                $commitmentDate = $commitmentData['date'];
+                $commitmentAmount = $commitmentData['amount'];
+
+                $ukDate =  date("d/m/Y", strtotime($commitmentDate));
+                $beforeCurrentNotice = beforeCurrentNotice($commitmentId, $commitmentAmount);
+
+                if ($newCapital > 0) {
+                    $totalNotice = totalNotice($newCapital, $beforeCurrentNotice);
+                    $newCapital = $newCapital - $totalNotice;
+
+                } else{
+                    $totalNotice = 0;
+                }
+
+
+
+                ?>
+
+            <td class="red-background" style="text-align: left;"><?php echo 'fund '. $commitmentFund ?></td>
+                <td class="red-background"><?php echo $totalNotice ? number_format($totalNotice, 2) : '-' ?></td>
+            </tr>
+            <?php endforeach; ?>
+        </table>
+    </div>
+    <?php endif; ?>
+
+
+
 </div>
 </body>
 
