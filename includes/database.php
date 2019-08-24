@@ -201,5 +201,97 @@ where dfi.commitment_id = '$commitmentId'";
 }
 
 
+function insertCallData() {
+
+    $callID = $_POST['cId'];
+    $capital = $_POST['capital'];
+    $date = $_POST['date'];
+    $investmentName = $_POST['name'];
+
+    $mysqli = new mysqli(HST, USR, PSW, DBN);
+
+    $q = "INSERT INTO data_call (id, call_id, `date`, investment_name, capital_requirement)
+VALUES ('$callID', '$callID', '$date', '$investmentName','$capital')";
+
+    $res = $mysqli->query($q);
+
+    if ($res->num_rows > 0)
+    {
+        //empty array
+        $investment = [];
+
+        while ($row = $res->fetch_assoc()) {
+            //push rows from database into the array
+            $investment[] = $row;
+        }
+    }
+
+    $mysqli->close();
+
+    return $investment;
+
+}
+
+function insertInvestmentData() {
+
+    $notice = $_POST['notice'];
+    $commitmentId = $_POST['commitmentId'];
+    $fundId = $_POST['fundId'];
+    $callId = $_POST['cId'];
+
+    $mysqli = new mysqli(HST, USR, PSW, DBN);
+
+    $q = "INSERT INTO data_fund_investment (id, call_id, commitment_id, fund_id, investment_amount)
+VALUES ('', '$callId', '$commitmentId', '$fundId','$notice')";
+
+    $res = $mysqli->query($q);
+
+    if ($res->num_rows > 0)
+    {
+        //empty array
+        $investment = [];
+
+        while ($row = $res->fetch_assoc()) {
+            //push rows from database into the array
+            $investment[] = $row;
+        }
+    }
+
+    $mysqli->close();
+
+    return $investment;
+
+}
+
+function getLastDataCall()
+{
+    openConnection();
+
+    global $mysqli;
+
+    $q = "SELECT * from data_call ORDER BY id DESC LIMIT 1 ";
+
+    $res = $mysqli->query($q);
+
+    if ($res->num_rows > 0)
+    {
+        //empty array
+        $calls = [];
+
+        while ($row = $res->fetch_assoc()) {
+            //push rows from database into the array
+            $calls[] = $row;
+        }
+    }
+    else {
+        echo "0 results";
+    }
+
+    closeConnection();
+
+    return $calls;
+}
+
+
 
 

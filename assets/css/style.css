@@ -124,7 +124,7 @@ input#date::placeholder, input#capital::placeholder  {
      text-align: right;
 }
 
-input#calculate, input#confirm  {
+input#calculate, .confirm-button  {
     top: 4rem;
     left: 10rem;
     color: white;
@@ -187,7 +187,7 @@ table#notice {
     top: 25rem;
 }
 
-input#confirm{
+.confirm-button {
     top: 35rem;
     width: 32rem;
     height: 2em;

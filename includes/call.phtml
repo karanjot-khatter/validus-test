@@ -11,13 +11,12 @@ include_once("includes/utilities.php");
 
 <body>
 
-<?php foreach (getDataCall() as $call): ?>
-    <?php
-        $id = $call['call_id'];
-        $newID = ++$id;
-    ?>
+<?php
+    $lastCallData = getLastDataCall();
+    $lastId = $lastCallData[0]['id'];
+    $newID = ++$lastId;
+?>
 
-<?php endforeach; ?>
 <div id="new-call-body">
 
     <div class="submit-form-fields">
@@ -42,7 +41,7 @@ include_once("includes/utilities.php");
             <div class="section">
                 <label>Capital Required for Investment</label>
                 <input id='currency' placeholder="$" disabled>
-                <input id="capital" type="text" name="capital" value="10,000,000">
+                <input id="capital" type="text" name="capital" value="10,000,000.00">
             </div>
 
             <input type="hidden" id="callId" name="callId" value="<?php echo $newID ?>">
@@ -60,7 +59,6 @@ include_once("includes/utilities.php");
         $paramCapital = turnIntoFloat($paramCapital);
         $paramName = strip_tags($_POST['name']);
         $usDate = date('Y-m-d');
-
     }
 
     ?>
@@ -81,7 +79,6 @@ include_once("includes/utilities.php");
                     <?php endif; ?>
                 </tr>
 
-                <tr>
                     <?php foreach (getCommitmentData() as $commitmentData) :?>
                         <?php
                         $commitmentId = $commitmentData['id'];
@@ -108,6 +105,7 @@ include_once("includes/utilities.php");
 
                         ?>
 
+                <tr>
                     <td><strong><?php echo $commitmentId ?></strong></td>
                     <td><strong><?php echo $commitmentFund ?></strong></td>
                     <td><?php echo $ukDate ?></td>
@@ -120,15 +118,14 @@ include_once("includes/utilities.php");
                     <?php endif;?>
                 </tr>
 
-                <?php endforeach; ?>
+                    <?php endforeach; ?>
             </table>
         </div>
 
     <?php
         $newCapital = strip_tags($_POST["capital"]);
         $newCapital = turnIntoFloat($newCapital);
-
-        ?>
+    ?>
 
     <?php if (isset($_POST["capital"])) : ?>
     <div class="notice-table">
@@ -139,10 +136,7 @@ include_once("includes/utilities.php");
                 <th class="red-background" style="border-bottom: none;" > </th>
             </tr>
 
-            <tr>
             <?php foreach (getCommitmentData() as $commitmentData) :?>
-
-
                 <?php
                 $commitmentId = $commitmentData['id'];
                 $commitmentFund = $commitmentData['fund_id'];
@@ -159,33 +153,30 @@ include_once("includes/utilities.php");
                 } else{
                     $totalNotice = 0;
                 }
-
-
-
                 ?>
 
-                <form id="confirmform" method="post" action="dashboard.php">
-
-                    <input type="submit" id="confirm" value="Confirm">
-
-                    <input type="hidden" id="capital" name="capital" value="<?php echo  $_POST["capital"] ?>">
-                    <input type="hidden" id="cId" name="cId" value="<?php echo  $_POST["callId"] ?>">
-                    <input type="hidden" id="date" name="date" value="<?php echo  $usDate ?>">
-                    <input type="hidden" id="name" name="name" value="<?php echo  $paramName ?>">
-
-                </form>
-
-            <td class="red-background" style="text-align: left"><?php echo 'fund '. $commitmentFund ?></td>
+            <tr>
+                <td class="red-background" style="text-align: left"><?php echo 'fund '. $commitmentFund ?></td>
                 <td class="red-background"><?php echo $totalNotice ? number_format($totalNotice, 2) : '-' ?></td>
-                <td class="red-background"> </td>
+                <td class="red-background"></td>
             </tr>
+
+            <form id="<?php echo "confirmform" .  $commitmentId ?>" method="post" action="dashboard.php">
+                <input type="hidden" id="capital" name="capital" value="<?php echo  $_POST["capital"] ?>">
+                <input type="hidden" id="cId" name="cId" value="<?php echo  $_POST["callId"] ?>">
+                <input type="hidden" id="date" name="date" value="<?php echo  $usDate ?>">
+                <input type="hidden" id="name" name="name" value="<?php echo  $paramName ?>">
+                <input type="hidden" id="notice" name="notice" value="<?php echo number_format($totalNotice, 2) ?>">
+                <input type="hidden" id="commitmentId" name="commitmentId" value="<?php echo  $commitmentId ?>">
+                <input type="hidden" id="fundId" name="fundId" value="<?php echo  $commitmentFund ?>">
+
+                <input type="submit" class="confirm-button" value="Confirm" id=<?php echo "confirm" .  $commitmentId ?>>
+            </form>
+
             <?php endforeach; ?>
         </table>
-
     </div>
     <?php endif; ?>
-
-
 
 </div>
 </body>

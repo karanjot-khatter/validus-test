@@ -17,23 +17,11 @@ $(document).ready(function() {
     });
 
     $(callLink).click(function() {
+        // alert('test');
         var nonClickedLink = $(".dashboard-link");
         var clickedLink = $(this);
         clickedProperties(clickedLink);
         nonClickedProperties(nonClickedLink);
-    });
-
-    $('#calculate').click(function () {
-        // alert('test');
-
-        var form = $("#callform");
-
-        $(form).submit();
-
-
-        $(this).css('background-color', 'gray');
-        $(this).prop('disabled', true);
-
     });
 
     function clickedProperties(clickedLink)

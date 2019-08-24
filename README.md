@@ -22,7 +22,7 @@ order to invest in a new investment.
 - Implemented github to store working version of code. (using command line)
 - Implemented provided files in document root : 'cd $HOME/dev/validus-test'
 - Implemented XDEBUGGER in PHP storm to ensure functions were working as expected.
-- Implememted 'index.php' to run the first page.
+- Implemented 'index.php' to run the first page.
 - Connection and Queries between mySQL database and PHP was done via the 'includes/database.php' file
 - Implementation of the header of every page was done in 'includes/header.html'
 
@@ -32,4 +32,4 @@ order to invest in a new investment.
 - https://www.w3schools.com/css/css_table.asp - table creation
 - https://www.php.net/manual/en/function.date.php - date format
 - https://www.php.net/manual/en/function.number-format.php - number format
--https://stackoverflow.com/questions/5733808/submit-form-and-stay-on-same-page - submit form and stay on same page (JQUERY)
+- https://stackoverflow.com/questions/5733808/submit-form-and-stay-on-same-page - submit form and stay on same page (JQUERY)
