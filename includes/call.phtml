@@ -128,7 +128,6 @@ include_once("includes/utilities.php");
     ?>
 
     <?php if (isset($_POST["capital"])) : ?>
-    <div class="notice-table">
         <table id="notice">
             <tr>
                 <th class="red-background"></th>
@@ -153,6 +152,11 @@ include_once("includes/utilities.php");
                 } else{
                     $totalNotice = 0;
                 }
+
+                $notice .= $totalNotice . ",";
+                $commitment .= $commitmentId . ",";
+                $cFund .= $commitmentFund . ",";
+
                 ?>
 
             <tr>
@@ -161,21 +165,20 @@ include_once("includes/utilities.php");
                 <td class="red-background"></td>
             </tr>
 
-            <form id="<?php echo "confirmform" .  $commitmentId ?>" method="post" action="dashboard.php">
+            <?php endforeach; ?>
+
+            <form id="confirmform" method="post" action="dashboard.php">
                 <input type="hidden" id="capital" name="capital" value="<?php echo  $_POST["capital"] ?>">
                 <input type="hidden" id="cId" name="cId" value="<?php echo  $_POST["callId"] ?>">
                 <input type="hidden" id="date" name="date" value="<?php echo  $usDate ?>">
                 <input type="hidden" id="name" name="name" value="<?php echo  $paramName ?>">
-                <input type="hidden" id="notice" name="notice" value="<?php echo number_format($totalNotice, 2) ?>">
-                <input type="hidden" id="commitmentId" name="commitmentId" value="<?php echo  $commitmentId ?>">
-                <input type="hidden" id="fundId" name="fundId" value="<?php echo  $commitmentFund ?>">
+                <input type="hidden" id="notice" name="notice" value="<?php echo $notice ?>">
+                <input type="hidden" id="commitmentId" name="commitmentId" value="<?php echo  $commitment ?>">
+                <input type="hidden" id="fundId" name="fundId" value="<?php echo $cFund ?>">
 
-                <input type="submit" class="confirm-button" value="Confirm" id=<?php echo "confirm" .  $commitmentId ?>>
+                <input type="submit" class="confirm-button" value="Confirm" id="confirm">
             </form>
-
-            <?php endforeach; ?>
         </table>
-    </div>
     <?php endif; ?>
 
 </div>

@@ -232,11 +232,8 @@ VALUES ('$callID', '$callID', '$date', '$investmentName','$capital')";
 
 }
 
-function insertInvestmentData() {
+function insertInvestmentData($commitmentId, $fundId, $notice) {
 
-    $notice = $_POST['notice'];
-    $commitmentId = $_POST['commitmentId'];
-    $fundId = $_POST['fundId'];
     $callId = $_POST['cId'];
 
     $mysqli = new mysqli(HST, USR, PSW, DBN);

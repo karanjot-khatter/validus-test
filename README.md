@@ -11,8 +11,8 @@ order to invest in a new investment.
 - On the new call page you are given a form, with a submit button, you can able to enter a value into this form.
 - Once the button has been submitted, you should see calculations for total notice and total undrawn notice.
 - You should then be prompted with a 'confirm' button, when if clicked it returns to dashboard page.
-- When you also click the confirm button, a new row is added.. however fund data is not showing.
-- Fund data is not showing as this hasn't been created yet.
+- When you also click the confirm button, a new row is added on the dashboard page.
+- The row of data is also filled with fund investment information.
 
 # Implementation
 - Tables created and values inserted in mySQL database - called 'validus'. (Navicat)
@@ -33,3 +33,4 @@ order to invest in a new investment.
 - https://www.php.net/manual/en/function.date.php - date format
 - https://www.php.net/manual/en/function.number-format.php - number format
 - https://stackoverflow.com/questions/5733808/submit-form-and-stay-on-same-page - submit form and stay on same page (JQUERY)
+- https://www.php.net/manual/en/function.explode.php - commas into arrays
