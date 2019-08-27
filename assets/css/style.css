@@ -24,12 +24,7 @@
     padding-bottom: 1.4rem;
 }
 
-#topHeader .new-call-link {
-    color: gray;
-    right: 20%;
-}
-
-.new-call-link, .dashboard-link, .callLogo {
+.callLogo {
     top: 1.5rem;
     font-size: 14px;
     position:absolute;
